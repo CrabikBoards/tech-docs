@@ -18,11 +18,13 @@ jobs:
         with:
             lfs: true
 
-      - name: Build
+      - name: Rust toolchain install
         uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
-          toolchain: stable
+            profile: minimal
+            toolchain: stable
+
+      - name: Build
         env:
           MDBOOK_VERSION: 0.4.25
           MDBOOK_ADMONISH_VERSION: 1.8.0
