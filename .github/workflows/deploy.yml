@@ -10,7 +10,7 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
-    container: rust:slim
+    # container: rust:slim
 
     steps:
       - name: Checkout
@@ -19,6 +19,10 @@ jobs:
             lfs: true
 
       - name: Build
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
         env:
           MDBOOK_VERSION: 0.4.25
           MDBOOK_ADMONISH_VERSION: 1.8.0
