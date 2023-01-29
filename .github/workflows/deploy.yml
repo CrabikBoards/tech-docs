@@ -10,7 +10,6 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
-    # container: rust:slim
 
     steps:
       - name: Checkout
@@ -33,6 +32,7 @@ jobs:
           cargo install mdbook --no-default-features  --features search --vers ${MDBOOK_VERSION}
           cargo install mdbook-admonish --vers ${MDBOOK_ADMONISH_VERSION}
           cargo install mdbook-linkcheck --vers ${MDBOOK_LINKCHECK_VERSION}
+          mdbook build
 
       - name: Setup Hosting
         run: |
