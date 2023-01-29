@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Crabik Slot ESP32-S3 - Technical documentation for Crabik products</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../theme/style.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../README.html">Current Products</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../boards/slot-esp32-s3/README.html" class="active">Crabik Slot ESP32-S3</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../boards/slot-esp32-s3/pinout.html">Pinout</a></li><li class="chapter-item "><a href="../../boards/slot-esp32-s3/connecting-modules.html">Connecting modules</a></li><li class="chapter-item "><a href="../../boards/slot-esp32-s3/firmware.html">Firmware</a></li><li class="chapter-item "><a href="../../boards/slot-esp32-s3/battery-usage.html">Using Li-Po/Li-Ion batteries</a></li><li class="chapter-item "><a href="../../boards/slot-esp32-s3/power-consumption-optimization.html">Optimization of energy consumption</a></li></ol></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Technical documentation for Crabik products</h1>
+
+                    <div class="right-buttons">
+                        <a href="https://github.com/CrabikBoards/tech-docs" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/CrabikBoards/tech-docs/edit/main/src/boards/slot-esp32-s3/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="crabik-slot-esp32-s3"><a class="header" href="#crabik-slot-esp32-s3">Crabik Slot ESP32-S3</a></h1>
+<ul>
+<li><a href="./pinout.html">Pinout</a></li>
+<li><a href="./connecting-modules.html">Connecting modules</a></li>
+<li><a href="./firmware.html">Firmware</a></li>
+<li><a href="./battery-usage.html">Using Li-Po/Li-Ion batteries</a></li>
+<li><a href="./power-consumption-optimization.html">Optimization of energy consumption</a></li>
+</ul>
+<p>Crabik Slot was created so that you can quickly prototype, research and educational projects, because it makes it easy to create and test without having to assemble everything on a breadboard and dig into a pile of wires.</p>
+<p>All you need to get started is a 5V power supply or a Li-Po/Li-Ion battery and a computer for programming. Crabik Slot takes care of charging and switching power sources, and also allows you to track the charge of the accumulator and reduce the power consumption of the board before going to bed.</p>
+<!-- TODO: beautiful gif -->
+<p>Crabik Slot ESP32-S3 is a control board with the following characteristics:</p>
+<ul>
+<li>Microcontroller <a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf">ESP32-S3-MINI-1-N8</a>
+<ul>
+<li>Computing cores:
+<ul>
+<li>Two Tensilica Xtensa LX7 cores (32 bits) with a frequency of up to 240 MHz</li>
+<li>RISC-V coprocessor with ultra-low power consumption (32 bits)</li>
+</ul>
+</li>
+<li>Flash memory: 8 MB</li>
+<li>SRAM memory: 512 KB</li>
+<li>Wireless connection:
+<ul>
+<li>Wi-Fi 802.11 b/g/n</li>
+<li>Bluetooth 5 (BLE + Mesh)</li>
+</ul>
+</li>
+<li>Hardware interfaces: PWM, ADC, UART, SPI, I2C, I2S, USB 1.1 OTG, USB Serial/JTAG controller, etc.</li>
+</ul>
+</li>
+<li>Microchips of <a href="https://ww1.microchip.com/downloads/en/DeviceDoc/MCP73831-Family-Data-Sheet-DS20001984H.pdf">charge</a> and <a href="https://www.analog.com/media/en/technical-documentation/data-sheets/MAX17048-MAX17049.pdf">determination of the actual charge percentage</a> of Li-Po/Li-Ion accumulators</li>
+<li>Single-bank (voltage up to 4.2 V) Li-Po/Li-Ion accumulators are supported</li>
+<li>Supply voltage of modules and logic levels 3.3 V</li>
+<li>LEDs indicate power, charge and user</li>
+<li>2x 600mA 3.3V LDO regulators
+<ul>
+<li>The second LDO is controlled by the user to reduce power consumption</li>
+<li>Low current consumption during sleep</li>
+</ul>
+</li>
+<li>Connector for connecting QWIIC / STEMMA QT modules</li>
+<li>Compatible with Troyka module format</li>
+<li>Dimensions: 50,8x50,8 mm</li>
+</ul>
+<p>Schematics and board design (KiCad project), distributed as open hardware, and available under <a href="https://ohwr.org/cern_ohl_w_v2.pdf">CERN-OHL-W v2</a> license.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../README.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../boards/slot-esp32-s3/pinout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../README.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../boards/slot-esp32-s3/pinout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js" charset="utf-8"></script>
+        <script src="../../mark.min.js" charset="utf-8"></script>
+        <script src="../../searcher.js" charset="utf-8"></script>
+
+        <script src="../../clipboard.min.js" charset="utf-8"></script>
+        <script src="../../highlight.js" charset="utf-8"></script>
+        <script src="../../book.js" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+
+    </body>
+</html>
+
