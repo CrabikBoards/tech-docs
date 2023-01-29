@@ -1,0 +1,41 @@
+---
+
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    container: rust:slim
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+            lfs: true
+
+      - name: Build
+        env:
+          MDBOOK_VERSION: 0.4.25
+          MDBOOK_ADMONISH_VERSION: 1.8.0
+          MDBOOK_LINKCHECK_VERSION: 0.7.7
+        run: |
+          cargo install mdbook --no-default-features  --features search --vers ${MDBOOK_VERSION}
+          cargo install mdbook-admonish --vers ${MDBOOK_ADMONISH_VERSION}
+          cargo install mdbook-linkcheck --vers ${MDBOOK_LINKCHECK_VERSION}
+
+      - name: Setup Hosting
+        run: |
+          touch book/html/.nojekyll &&
+          echo "tech-docs.crabikboards.com" > book/html/CNAME
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./book/html
