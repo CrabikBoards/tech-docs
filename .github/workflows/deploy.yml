@@ -10,10 +10,14 @@ on:
 jobs:
   Deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
         with:
             lfs: true
 
@@ -34,14 +38,14 @@ jobs:
           cargo install mdbook-linkcheck --vers ${MDBOOK_LINKCHECK_VERSION}
           mdbook build
 
-      - name: Setup Hosting
-        run: |
-          touch book/html/.nojekyll &&
-          echo "tech-docs.crabikboards.com" > book/html/CNAME
+      # - name: Setup Hosting
+      #   run: |
+      #     touch book/html/.nojekyll &&
+      #     echo "tech-docs.crabikboards.com" > book/html/CNAME
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          PERSONAL_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./book/html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book/html
+          cname: tech-docs.crabikboards.com
