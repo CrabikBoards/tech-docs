@@ -38,11 +38,6 @@ jobs:
           cargo install mdbook-linkcheck --vers ${MDBOOK_LINKCHECK_VERSION}
           mdbook build
 
-      # - name: Setup Hosting
-      #   run: |
-      #     touch book/html/.nojekyll &&
-      #     echo "tech-docs.crabikboards.com" > book/html/CNAME
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
